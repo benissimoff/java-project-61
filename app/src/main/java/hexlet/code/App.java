@@ -1,15 +1,19 @@
 package hexlet.code;
 
+import hexlet.code.games.Calc;
+import hexlet.code.games.Even;
+
 import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         //System.out.println("Welcome to the Brain Games!");
+        String[] games = {"Exit", "Greet", "Even", "Calc"};
         String welcomeString =
-                "Please enter the game number and press Enter.\n"
-                + "1 - Greet\n"
-                + "2 - Even\n"
-                + "0 - Exit\n"
-                + "Your choice: ";
+                "Please enter the game number and press Enter.\n";
+        for (int i = 1; i < games.length; i++) {
+            welcomeString += i + " - " + games[i] + "\n";
+        }
+        welcomeString += "Your choice: ";
         System.out.print(welcomeString);
         Scanner scanner = new Scanner(System.in);
         String userAnswer = scanner.nextLine();
@@ -18,7 +22,10 @@ public class App {
                 Greeting.greetUser();
                 break;
             case "2":
-                GameEven.runGame();
+                Engine.run(new Even());
+                break;
+            case "3":
+                Engine.run(new Calc());
                 break;
             case "0":
                 System.out.println("Bye bye!");

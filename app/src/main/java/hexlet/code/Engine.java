@@ -1,25 +1,34 @@
 package hexlet.code;
 
-import java.util.Random;
+import hexlet.code.games.Game;
 import java.util.Scanner;
 
-public class GameEven {
-    public static void runGame() {
-        final int maxNumber = 100;
+public class Engine {
+    public static void run(Game game) {
+        // greet user
         String userName = Greeting.greetUser();
         int correctAnswerCount = 0;
+        // print rules
+        String rules = game.getRules();
+        System.out.println(rules);
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
 
         while (correctAnswerCount < 3) {
-            Random generator = new Random();
-            int randomNumber = generator.nextInt(maxNumber);
-            System.out.println("Question: " + randomNumber);
+            // make question
+            game.generate();
+            String question = game.getQuestion();
+
+            System.out.println("Question: " + question);
             System.out.print("Your answer: ");
-            String correctAnswer = randomNumber % 2 == 0 ? "yes" : "no";
+
+            // get user answer
             String userAnswer = scanner.nextLine();
 
-            if (correctAnswer.equals(userAnswer)) {
+            // check user answer
+            String correctAnswer = game.getAnswer();
+            boolean isCorrectAnswer = correctAnswer.equals(userAnswer);
+
+            if (isCorrectAnswer) {
                 System.out.println("Correct!");
                 correctAnswerCount++;
             } else {
@@ -28,11 +37,8 @@ public class GameEven {
                         + "Let's try again, " + userName + "!\n";
                 System.out.println(message);
                 return;
-
             }
-
         }
-
         System.out.println("Congratulations, " + userName + "!");
     }
 }
