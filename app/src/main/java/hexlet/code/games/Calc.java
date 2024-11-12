@@ -19,7 +19,8 @@ public final class Calc implements Game {
         int randomNumber1 = generator.nextInt(maxNumber);
         int randomNumber2 = generator.nextInt(maxNumber);
         String[] operations = {"+", "-", "*"};
-        String randomOperation = operations[generator.nextInt(3)];
+        int operationsLength = operations.length;
+        String randomOperation = operations[generator.nextInt(operationsLength)];
         question = randomNumber1 + " " + randomOperation + " " + randomNumber2;
 
         // make correct answer

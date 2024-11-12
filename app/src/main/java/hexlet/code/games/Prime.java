@@ -13,7 +13,8 @@ public final class Prime implements Game {
 
     public void generate() {
         Random generator = new Random();
-        int randomNumber = generator.nextInt(200);
+        int maxNumber = 200;
+        int randomNumber = generator.nextInt(maxNumber);
 
         question = "" + randomNumber;
         answer = isPrime(randomNumber) ? "yes" : "no";
