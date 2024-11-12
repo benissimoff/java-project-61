@@ -13,3 +13,8 @@ Game Calc
 
 [![asciicast](https://asciinema.org/a/EsImXX4H6HR9bsC9GOvpo9coc.svg)](https://asciinema.org/a/EsImXX4H6HR9bsC9GOvpo9coc)
 
+GCD - Greatest Common Divider
+[![asciicast](https://asciinema.org/a/qvfgt6xTsOlhOLfNmNvZ72vL8.svg)](https://asciinema.org/a/qvfgt6xTsOlhOLfNmNvZ72vL8)
+
+[![asciicast](https://asciinema.org/a/dgNkzucJ54UQ3Z7Wq1Px15GhN.svg)](https://asciinema.org/a/dgNkzucJ54UQ3Z7Wq1Px15GhN)
+

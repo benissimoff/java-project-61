@@ -42,4 +42,4 @@ bin/
 .DS_Store
 
 ###
-even_*.demo
+*.demo

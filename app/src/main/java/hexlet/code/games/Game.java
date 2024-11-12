@@ -5,5 +5,4 @@ public interface Game {
     void generate();
     String getQuestion();
     String getAnswer();
-
 }
