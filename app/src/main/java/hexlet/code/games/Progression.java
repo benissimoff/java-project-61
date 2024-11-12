@@ -13,13 +13,13 @@ public final class Progression implements Game {
 
     public void generate() {
         Random generator = new Random();
-        int minLength = 5;
-        int maxLength = 15;
+        final int minLength = 5;
+        final int maxLength = 15;
         int progressionLength = minLength + generator.nextInt(maxLength - minLength);
         int[] elements = new int[progressionLength];
-        int maxZeroElement = 30;
+        final int maxZeroElement = 30;
         int n0 = generator.nextInt(maxZeroElement);
-        int maxDelta = 20;
+        final int maxDelta = 20;
         int delta = 1 + generator.nextInt(maxDelta);
         int secretIndex = generator.nextInt(progressionLength);
 

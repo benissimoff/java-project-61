@@ -17,7 +17,7 @@ public final class GCD implements Game {
         int randomNumber1 = 1;
         int randomNumber2 = 1;
         if (generator.nextInt(2) == 1) {
-            int maxBase = 20;
+            final int maxBase = 20;
             int randomBase = 1 + generator.nextInt(maxBase);
             randomNumber1 = randomBase * (1 + generator.nextInt(maxNumber / randomBase));
             randomNumber2 = randomBase * (1 + generator.nextInt(maxNumber / randomBase));

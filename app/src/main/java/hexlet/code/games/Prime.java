@@ -13,7 +13,7 @@ public final class Prime implements Game {
 
     public void generate() {
         Random generator = new Random();
-        int maxNumber = 200;
+        final int maxNumber = 200;
         int randomNumber = generator.nextInt(maxNumber);
 
         question = "" + randomNumber;
