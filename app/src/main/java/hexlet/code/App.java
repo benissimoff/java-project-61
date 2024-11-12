@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         String[] games = {"Exit", "Greet", "Even", "Calc", "GCD", "Progression", "Prime"};
-        String welcomeString = "Welcome to the Brain Games!\n"git
+        String welcomeString = "Welcome to the Brain Games!\n"
             + "Please enter the game number and press Enter.\n";
         for (int i = 1; i < games.length; i++) {
             welcomeString += i + " - " + games[i] + "\n";
