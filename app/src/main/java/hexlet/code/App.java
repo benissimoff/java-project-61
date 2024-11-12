@@ -3,12 +3,13 @@ package hexlet.code;
 import hexlet.code.games.Calc;
 import hexlet.code.games.Even;
 import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
 
 import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         //System.out.println("Welcome to the Brain Games!");
-        String[] games = {"Exit", "Greet", "Even", "Calc", "GCD"};
+        String[] games = {"Exit", "Greet", "Even", "Calc", "GCD", "Progression"};
         String welcomeString =
                 "Please enter the game number and press Enter.\n";
         for (int i = 1; i < games.length; i++) {
@@ -32,6 +33,10 @@ public class App {
             case "4":
                 Engine.run(new GCD());
                 break;
+            case "5":
+                Engine.run(new Progression());
+                break;
+
             case "0":
                 System.out.println("Bye bye!");
                 break;
