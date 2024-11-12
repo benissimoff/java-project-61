@@ -1,13 +1,17 @@
 package hexlet.code;
 
-import hexlet.code.games.*;
-
+import hexlet.code.games.Even;
+import hexlet.code.games.Calc;
+import hexlet.code.games.GCD;
+import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
 import java.util.Scanner;
+
 public class App {
     public static void main(String[] args) {
         String[] games = {"Exit", "Greet", "Even", "Calc", "GCD", "Progression", "Prime"};
-        String welcomeString =
-                "Please enter the game number and press Enter.\n";
+        String welcomeString = "Welcome to the Brain Games!\n"git
+            + "Please enter the game number and press Enter.\n";
         for (int i = 1; i < games.length; i++) {
             welcomeString += i + " - " + games[i] + "\n";
         }
