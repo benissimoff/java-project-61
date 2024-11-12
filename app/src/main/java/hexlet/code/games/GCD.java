@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import java.util.Random;
 
-public class GCD implements Game {
+public final class GCD implements Game {
     private final String rules = "Find the greatest common divisor of given numbers.";
     private String question;
     private String answer;

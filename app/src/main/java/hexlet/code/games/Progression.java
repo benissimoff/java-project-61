@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import java.util.Random;
 
-public class Progression implements Game {
+public final class Progression implements Game {
     private final String rules = "What number is missing in the progression?";
     private String question;
     private String answer;

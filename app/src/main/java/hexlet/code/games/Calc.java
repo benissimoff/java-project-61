@@ -2,7 +2,7 @@ package hexlet.code.games;
 
 import java.util.Random;
 
-public class Calc implements Game {
+public final class Calc implements Game {
     private final String rules = "What is the result of the expression?";
     private String question;
     private String answer;
