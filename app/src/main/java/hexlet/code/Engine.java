@@ -5,32 +5,27 @@ import java.util.Scanner;
 
 public class Engine {
     public static void run(Game game) {
-        // greet user
+        final int maxRounds = 3;
         String userName = Greeting.greetUser();
-        int correctAnswerCount = 0;
-        // print rules
+        int score = 0;
         String rules = game.getRules();
         System.out.println(rules);
         Scanner scanner = new Scanner(System.in);
 
-        while (correctAnswerCount < 3) {
-            // make question
+        while (score < maxRounds) {
             game.generate();
+
             String question = game.getQuestion();
-
             System.out.println("Question: " + question);
+
             System.out.print("Your answer: ");
-
-            // get user answer
             String userAnswer = scanner.nextLine();
-
-            // check user answer
             String correctAnswer = game.getAnswer();
             boolean isCorrectAnswer = correctAnswer.equals(userAnswer);
 
             if (isCorrectAnswer) {
                 System.out.println("Correct!");
-                correctAnswerCount++;
+                score++;
             } else {
                 String message = "'" + userAnswer + "' is wrong answer ;(. "
                         + "Correct answer was '" + correctAnswer + "'.\n"
@@ -39,6 +34,7 @@ public class Engine {
                 return;
             }
         }
+
         System.out.println("Congratulations, " + userName + "!");
     }
 }
