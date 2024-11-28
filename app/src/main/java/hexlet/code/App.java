@@ -30,7 +30,7 @@ public class App {
                 Even.run();
                 break;
             case "3":
-                Engine.run(new Calc());
+                Calc.run();
                 break;
             case "4":
                 Engine.run(new GCD());

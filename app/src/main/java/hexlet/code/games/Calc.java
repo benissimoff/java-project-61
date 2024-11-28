@@ -1,27 +1,34 @@
 package hexlet.code.games;
 
-import java.util.Random;
 
-public final class Calc implements Game {
-    private final String rules = "What is the result of the expression?";
-    private String question;
-    private String answer;
+import hexlet.code.Engine;
 
-    public String getRules() {
-        return rules;
+import static hexlet.code.Utils.getRandomInt;
+
+public final class Calc {
+    private static final String RULE = "What is the result of the expression?";
+
+    public static void run() {
+        final int maxRounds = 3;
+        String[][] questions = new String[maxRounds][2];
+
+        for (int i = 0; i < maxRounds; i++) {
+            questions[i] = generateQuestion();
+        }
+
+        Engine.start(RULE, questions);
     }
 
-    public void generate() {
+    private static String[] generateQuestion() {
         final int maxNumber = 100;
-
+        String[] question = new String[2];
         // make question
-        Random generator = new Random();
-        int randomNumber1 = generator.nextInt(maxNumber);
-        int randomNumber2 = generator.nextInt(maxNumber);
+        int randomNumber1 = getRandomInt(maxNumber);
+        int randomNumber2 = getRandomInt(maxNumber);
         String[] operations = {"+", "-", "*"};
         int operationsLength = operations.length;
-        String randomOperation = operations[generator.nextInt(operationsLength)];
-        question = randomNumber1 + " " + randomOperation + " " + randomNumber2;
+        String randomOperation = operations[getRandomInt(operationsLength)];
+        question[0] = randomNumber1 + " " + randomOperation + " " + randomNumber2;
 
         // make correct answer
         int correctAnswer;
@@ -40,15 +47,8 @@ public final class Calc implements Game {
                 break;
         }
 
-        answer = "" + correctAnswer;
+        question[1] = "" + correctAnswer;
 
-    }
-
-    public String getQuestion() {
         return question;
-    }
-
-    public String getAnswer() {
-        return answer;
     }
 }

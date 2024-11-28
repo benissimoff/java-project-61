@@ -1,6 +1,5 @@
 package hexlet.code;
 
-import hexlet.code.games.Calc;
 import hexlet.code.games.Game;
 import java.util.Scanner;
 
@@ -39,12 +38,12 @@ public class Engine {
         System.out.println("Congratulations, " + userName + "!");
     }
 
-    public static void start(String rules, String[][] questions ) {
+    public static void start(String rule, String[][] questions) {
         final int maxRounds = 3;
         String userName = Greeting.greetUser();
         int round = 0;
         int score = 0;
-        System.out.println(rules);
+        System.out.println(rule);
         Scanner scanner = new Scanner(System.in);
 
         while (round < maxRounds) {

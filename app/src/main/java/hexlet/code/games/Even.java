@@ -4,21 +4,21 @@ import hexlet.code.Engine;
 import hexlet.code.Utils;
 
 public final class Even {
-    private static final String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    private static final String RULE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-    public static void run(){
-        final int MAX_ROUNDS = 3;
-        String[][] questions = new String[MAX_ROUNDS][2];
+    public static void run() {
+        final int maxRounds = 3;
+        String[][] questions = new String[maxRounds][2];
 
-        for (int i = 0; i < MAX_ROUNDS; i++){
+        for (int i = 0; i < maxRounds; i++) {
             String[] question = generateQuestion();
             questions[i] = question;
         }
 
-        Engine.start(rules, questions);
+        Engine.start(RULE, questions);
     }
 
-    public static String[] generateQuestion() {
+    private static String[] generateQuestion() {
         String[] question = new String[2];
 
         final int maxNumber = 100;
