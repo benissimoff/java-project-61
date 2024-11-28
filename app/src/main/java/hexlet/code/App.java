@@ -27,7 +27,7 @@ public class App {
                 Greeting.greetUser();
                 break;
             case "2":
-                Engine.run(new Even());
+                Even.run();
                 break;
             case "3":
                 Engine.run(new Calc());
