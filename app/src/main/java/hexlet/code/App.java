@@ -33,7 +33,8 @@ public class App {
                 Calc.run();
                 break;
             case "4":
-                Engine.run(new GCD());
+//                Engine.run(new GCD());
+                GCD.run();
                 break;
             case "5":
                 Engine.run(new Progression());

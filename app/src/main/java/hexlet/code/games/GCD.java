@@ -1,43 +1,44 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import hexlet.code.Engine;
+import static hexlet.code.Utils.getRandomInt;
 
-public final class GCD implements Game {
-    private final String rules = "Find the greatest common divisor of given numbers.";
-    private String question;
-    private String answer;
+public final class GCD {
+    private static final String RULE = "Find the greatest common divisor of given numbers.";
 
-    public String getRules() {
-        return this.rules;
+    public static void run() {
+        final int maxRounds = 3;
+        String[][] questions = new String[maxRounds][2];
+
+        for (int i = 0; i < maxRounds; i++) {
+            questions[i] = generateQuestion();
+        }
+
+        Engine.start(RULE, questions);
     }
 
-    public void generate() {
+    private static String[] generateQuestion() {
         final int maxNumber = 100;
-        Random generator = new Random();
+        String[] question = new String[2];
+//        Random generator = new Random();
         int randomNumber1 = 1;
         int randomNumber2 = 1;
-        if (generator.nextInt(2) == 1) {
+        if (getRandomInt(2) == 1) {
             final int maxBase = 20;
-            int randomBase = 1 + generator.nextInt(maxBase);
-            randomNumber1 = randomBase * (1 + generator.nextInt(maxNumber / randomBase));
-            randomNumber2 = randomBase * (1 + generator.nextInt(maxNumber / randomBase));
+            int base = getRandomInt(1, maxBase);
+            randomNumber1 = base * (getRandomInt(1, maxNumber / base));
+            randomNumber2 = base * (getRandomInt(1, maxNumber / base));
         } else {
-            randomNumber1 = 1 + generator.nextInt(maxNumber);
-            randomNumber2 = 1 + generator.nextInt(maxNumber);
+            randomNumber1 = getRandomInt(1, maxNumber);
+            randomNumber2 = getRandomInt(1, maxNumber);
         }
 
         int correctAnswer = gcd(randomNumber1, randomNumber2);
 
-        question = randomNumber1 + " " + randomNumber2;
-        answer = "" + correctAnswer;
-    }
+        question[0] = randomNumber1 + " " + randomNumber2;
+        question[1] = "" + correctAnswer;
 
-    public String getQuestion() {
         return question;
-    }
-
-    public String getAnswer() {
-        return answer;
     }
 
     private static int gcd(int a, int b) {
