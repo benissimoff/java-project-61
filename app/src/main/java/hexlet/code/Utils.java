@@ -10,7 +10,7 @@ public final class Utils {
 
     public static int getRandomInt(int low, int high) {
         Random generator = new Random();
-        int result = low + generator.nextInt(high);
+        int result = low + generator.nextInt(high - low);
 
         return result;
     }

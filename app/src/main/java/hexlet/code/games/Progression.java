@@ -1,49 +1,53 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import hexlet.code.Engine;
 
-public final class Progression implements Game {
-    private final String rules = "What number is missing in the progression?";
-    private String question;
-    private String answer;
+import static hexlet.code.Utils.getRandomInt;
 
-    public String getRules() {
-        return rules;
+public final class Progression {
+    private static final String RULE = "What number is missing in the progression?";
+
+    public static void run() {
+        final int maxRounds = 3;
+        String[][] questions = new String[maxRounds][2];
+
+        for (int i = 0; i < maxRounds; i++) {
+            questions[i] = generateQuestion();
+        }
+
+        Engine.start(RULE, questions);
     }
 
-    public void generate() {
-        Random generator = new Random();
+
+    private static String[] generateQuestion() {
         final int minLength = 5;
         final int maxLength = 15;
-        int progressionLength = minLength + generator.nextInt(maxLength - minLength);
+        int progressionLength = getRandomInt(minLength, maxLength);
         int[] elements = new int[progressionLength];
-        final int maxZeroElement = 30;
-        int n0 = generator.nextInt(maxZeroElement);
-        final int maxDelta = 20;
-        int delta = 1 + generator.nextInt(maxDelta);
-        int secretIndex = generator.nextInt(progressionLength);
 
-        question = "";
+        final int maxStartElement = 30;
+        int startElement = getRandomInt(maxStartElement);
+        final int maxDelta = 20;
+        int delta = getRandomInt(1, maxDelta);
+        int secretIndex = getRandomInt(progressionLength);
+
+        String[] question = new String[2];
+
+        String questionTmp = "";
 
         for (int i = 0; i < progressionLength; i++) {
-            elements[i] = n0 + i * delta;
+            elements[i] = startElement + i * delta;
             String item = "..";
             if (secretIndex != i) {
                 item = "" + elements[i];
             }
 
-            question += (i == 0 ? "" : " ") + item;
+            questionTmp += (i == 0 ? "" : " ") + item;
         }
 
-        answer = "" + elements[secretIndex];
+        question[0] = questionTmp;
+        question[1] = "" + elements[secretIndex];
 
-    }
-
-    public String getQuestion() {
         return question;
-    }
-
-    public String getAnswer() {
-        return answer;
     }
 }
