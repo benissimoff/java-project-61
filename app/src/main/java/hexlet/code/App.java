@@ -39,7 +39,7 @@ public class App {
                 Progression.run();
                 break;
             case "6":
-                Engine.run(new Prime());
+                Prime.run();
                 break;
             default:
                 System.out.println("Bye bye!");

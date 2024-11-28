@@ -1,23 +1,30 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import hexlet.code.Engine;
 
-public final class Prime implements Game {
-    private final String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    private String question;
-    private String answer;
+import static hexlet.code.Utils.convertBool2YesNo;
+import static hexlet.code.Utils.getRandomInt;
 
-    public String getRules() {
-        return rules;
+public final class Prime {
+    private static final String RULE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+
+    public static void run() {
+        final int maxRounds = 3;
+        String[][] questions = new String[maxRounds][2];
+
+        for (int i = 0; i < maxRounds; i++) {
+            questions[i] = generateQuestion();
+        }
+
+        Engine.start(RULE, questions);
     }
 
-    public void generate() {
-        Random generator = new Random();
+    private static String[] generateQuestion() {
         final int maxNumber = 200;
-        int randomNumber = generator.nextInt(maxNumber);
+        int randomNumber = getRandomInt(maxNumber);
+        String[] question = {"" + randomNumber, convertBool2YesNo(isPrime(randomNumber)) };
 
-        question = "" + randomNumber;
-        answer = isPrime(randomNumber) ? "yes" : "no";
+        return question;
     }
 
     private static boolean isPrime(int number) {
@@ -39,13 +46,5 @@ public final class Prime implements Game {
         }
 
         return result;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public String getAnswer() {
-        return answer;
     }
 }
