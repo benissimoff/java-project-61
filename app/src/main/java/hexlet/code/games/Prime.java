@@ -9,7 +9,7 @@ public final class Prime {
     private static final String RULE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
     public static void run() {
-        final int maxRounds = 3;
+        final int maxRounds = Engine.getMaxRounds();
         String[][] questions = new String[maxRounds][2];
 
         for (int i = 0; i < maxRounds; i++) {

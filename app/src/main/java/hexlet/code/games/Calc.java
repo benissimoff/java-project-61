@@ -1,15 +1,13 @@
 package hexlet.code.games;
 
-
 import hexlet.code.Engine;
-
 import static hexlet.code.Utils.getRandomInt;
 
 public final class Calc {
     private static final String RULE = "What is the result of the expression?";
 
     public static void run() {
-        final int maxRounds = 3;
+        final int maxRounds = Engine.getMaxRounds();
         String[][] questions = new String[maxRounds][2];
 
         for (int i = 0; i < maxRounds; i++) {
@@ -22,33 +20,47 @@ public final class Calc {
     private static String[] generateQuestion() {
         final int maxNumber = 100;
         String[] question = new String[2];
-        // make question
-        int randomNumber1 = getRandomInt(maxNumber);
-        int randomNumber2 = getRandomInt(maxNumber);
-        String[] operations = {"+", "-", "*"};
-        int operationsLength = operations.length;
-        String randomOperation = operations[getRandomInt(operationsLength)];
-        question[0] = randomNumber1 + " " + randomOperation + " " + randomNumber2;
+        int number1 = getRandomInt(maxNumber);
+        int number2 = getRandomInt(maxNumber);
+        char operator = getRandomOperator();
 
-        // make correct answer
-        int correctAnswer;
-        switch (randomOperation) {
-            case "+":
-                correctAnswer = randomNumber1 + randomNumber2;
+        question[0] = makeExpression(number1, number2, operator);
+        question[1] = "" + calcAnswer(number1, number2, operator);
+
+        return question;
+    }
+
+    private static char getRandomOperator() {
+        char[] operators = {'+', '-', '*'};
+        int operatorsLength = operators.length;
+        char randomOperator = operators[getRandomInt(operatorsLength)];
+
+        return randomOperator;
+    }
+
+    private static String makeExpression(int number1, int number2, char operator) {
+        String result = number1 + " " + operator + " " + number2;
+
+        return result;
+    }
+
+    private static int calcAnswer(int number1, int number2, char operator) {
+        int answer = 0;
+
+        switch (operator) {
+            case '+':
+                answer = number1 + number2;
                 break;
-            case "-":
-                correctAnswer = randomNumber1 - randomNumber2;
+            case '-':
+                answer = number1 - number2;
                 break;
-            case "*":
-                correctAnswer = randomNumber1 * randomNumber2;
+            case '*':
+                answer = number1 * number2;
                 break;
             default:
-                correctAnswer = 0;
                 break;
         }
 
-        question[1] = "" + correctAnswer;
-
-        return question;
+        return answer;
     }
 }

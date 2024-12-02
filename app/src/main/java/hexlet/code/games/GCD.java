@@ -7,7 +7,7 @@ public final class GCD {
     private static final String RULE = "Find the greatest common divisor of given numbers.";
 
     public static void run() {
-        final int maxRounds = 3;
+        final int maxRounds = Engine.getMaxRounds();
         String[][] questions = new String[maxRounds][2];
 
         for (int i = 0; i < maxRounds; i++) {
@@ -20,7 +20,6 @@ public final class GCD {
     private static String[] generateQuestion() {
         final int maxNumber = 100;
         String[] question = new String[2];
-//        Random generator = new Random();
         int randomNumber1 = 1;
         int randomNumber2 = 1;
         if (getRandomInt(2) == 1) {

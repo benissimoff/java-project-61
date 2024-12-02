@@ -7,12 +7,11 @@ public final class Even {
     private static final String RULE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
     public static void run() {
-        final int maxRounds = 3;
+        final int maxRounds = Engine.getMaxRounds();
         String[][] questions = new String[maxRounds][2];
 
         for (int i = 0; i < maxRounds; i++) {
-            String[] question = generateQuestion();
-            questions[i] = question;
+            questions[i] = generateQuestion();
         }
 
         Engine.start(RULE, questions);
@@ -25,8 +24,14 @@ public final class Even {
         int randomNumber = Utils.getRandomInt(maxNumber);
 
         question[0] = "" + randomNumber;
-        question[1] = Utils.convertBool2YesNo(randomNumber % 2 == 0);
+        question[1] = makeAnswer(randomNumber);
 
         return question;
+    }
+
+    private static String makeAnswer(int number) {
+        String result = Utils.convertBool2YesNo(number % 2 == 0);
+
+        return result;
     }
 }
