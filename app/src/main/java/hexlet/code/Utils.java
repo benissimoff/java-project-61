@@ -14,10 +14,4 @@ public final class Utils {
 
         return result;
     }
-
-    public static String convertBool2YesNo(boolean expression) {
-        String result = expression ? "yes" : "no";
-
-        return result;
-    }
 }

@@ -2,8 +2,7 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import static hexlet.code.Utils.convertBool2YesNo;
-import static hexlet.code.Utils.getRandomInt;
+import hexlet.code.Utils;
 
 public final class Prime {
     private static final String RULE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
@@ -21,8 +20,8 @@ public final class Prime {
 
     private static String[] generateQuestion() {
         final int maxNumber = 200;
-        int randomNumber = getRandomInt(maxNumber);
-        String[] question = {"" + randomNumber, convertBool2YesNo(isPrime(randomNumber)) };
+        int randomNumber = Utils.getRandomInt(maxNumber);
+        String[] question = {"" + randomNumber, isPrime(randomNumber) ? "yes" : "no" };
 
         return question;
     }

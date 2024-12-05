@@ -30,8 +30,12 @@ public final class Even {
     }
 
     private static String makeAnswer(int number) {
-        String result = Utils.convertBool2YesNo(number % 2 == 0);
+        String result = isEven(number) ? "yes" : "no";
 
         return result;
+    }
+
+    private static boolean isEven(int number) {
+        return number % 2 == 0;
     }
 }
